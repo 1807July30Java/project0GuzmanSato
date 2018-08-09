@@ -9,17 +9,20 @@ public class BankConsole {
 		System.out.println("Do you have an account? (yes/no): ");
 		String hasAccount = input.nextLine();
 		if (hasAccount.equals("no") || hasAccount.equals("n")) {
+			//Doesnt have account, see if they would like to register
 			System.out.println("Would you like to create an account? (yes/no): ");
 			String wantsToRegister = input.nextLine();
 			if (wantsToRegister.equals("no") || wantsToRegister.equals("n")) {
+				//Exit
 				System.out.println("Then you have no business here");
 			} else if (wantsToRegister.equals("yes") || wantsToRegister.equals("y")) {
 				// REGISTRATION
 				System.out.println("Awesome, please enter your desired username: ");
-
 			}
 		} else if (hasAccount.equals("yes") || hasAccount.equals("y")) {
 			//HAS ACCOUNT -- LOGIN
+			
 		}
+		input.close();
 	}
 }
