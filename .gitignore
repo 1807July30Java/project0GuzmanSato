@@ -121,3 +121,6 @@ testem.log
 
 #ignore target
 target/
+
+#ignore proporties file
+.properties
