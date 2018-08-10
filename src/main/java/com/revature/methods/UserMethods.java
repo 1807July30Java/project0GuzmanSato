@@ -4,10 +4,11 @@ import com.revature.pojo.User;
 
 public interface UserMethods {
 	
-	public int createUser(String username, String password);
-	public int deleteUser(String username, int accountID);
-	public int updateUser(String username);
-	
+	public boolean createUser(String username, String password);
+	//for super user
+	public boolean deleteUser(String username);
+	//I dont think we need this:
+	public boolean updateUser(String username);
 	
 	
 }

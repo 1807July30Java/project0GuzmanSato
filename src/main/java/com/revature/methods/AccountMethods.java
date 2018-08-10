@@ -5,11 +5,13 @@ import com.revature.pojo.User;
 
 public interface AccountMethods {
 		
-	public BankAccount viewAccountSuper(int accountID);
-	public BankAccount viewAccount(int accountID);
-	public int createAccount(int accountID);
-	public int deleteAccount(int accountID);
-	public int deleteAccountSuper(int accountID);
+	//Dont need these if we just check if user is super
+	//public BankAccount viewAccountSuper(int accountID);
+	//public int deleteAccountSuper(int accountID);
+	public BankAccount viewAccount(User u,int accountID);
+	public int createAccount(User u,int accountID);
+	public int deleteAccount(User u,int accountID);
+
 	
 	//Bonus
 	public int TransactionHistory(int accountID);
