@@ -8,7 +8,7 @@ public interface UserMethods {
 	//for super user
 	public boolean deleteUser(String username);
 	//I dont think we need this:
-	public boolean updateUser(String username);
-	
+	//public boolean updateUser(String username);
+	public User getUserByName(String username);
 	
 }
