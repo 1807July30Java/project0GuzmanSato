@@ -19,7 +19,7 @@ public class Driver {
 				System.out.println("thanks for choosing to register");
 				boolean accountMade = false;
 				boolean cancel = false;
-				while (!accountMade || !cancel) {
+				while (!accountMade && !cancel) {
 					System.out.println("Enter your desired username: ");
 					System.out.println("if you would like to cancel, type cancel");
 					String desiredName = input.nextLine();
