@@ -55,21 +55,49 @@ public class Driver {
 				}
 			} else if (action.equals("login")) {
 				// Logging in
-				System.out.println("Please type in your username:");
-				String username = input.nextLine();
-				System.out.println("Please type in your password:");
-				String password = input.nextLine();
-				
-				AccountMethods bankMethod = new BankMethods();
-				User user = new User(username,password);
-				BankAccount bm = bankMethod.viewAccount(user);
-				if(bm == null) {
-					System.out.println("Invalid login credentials");
+				UserMethods method = new DriverMethods();
+
+				boolean loggedIn = false;
+				boolean exit = false;
+				String username = "";
+				String password = "";
+				while (!loggedIn && !exit) {
+					System.out.println("Please type in your username:");
+					username = input.nextLine();
+					if (username.equals("cancel")) {
+						exit = true;
+					} else {
+						User possibleUser = method.getUserByName(username);
+						if (possibleUser == null) {
+							// user with that name not existing
+							System.out.println("Username does not exist, try again");
+							System.out.println("if you would like to cancel and login, please type cancel");
+						} else {
+							System.out.println("Please type in your password:");
+							password = input.nextLine();
+							if (!possibleUser.getPassword().equals(password)) {
+								System.out.println("Invalid login credentials");
+							} else {
+								// user has ok credentials
+								User user = new User(username, password);
+								AccountMethods bankMethod = new BankMethods();
+								BankAccount bm = bankMethod.viewAccount(user);
+								if (bm == null) {
+									System.out.println("No accounts under this user");
+								} else {
+									
+								}
+							}
+						}
+					}
+
 				}
-				else {
-					System.out.println(bm.getBalance());
-				}
+
 				
+				
+				
+				
+
 			} else if (action.equals("exit")) {
 				System.out.println("You have selected exit, are you sure(y/n):");
 				String isSure = input.nextLine();
