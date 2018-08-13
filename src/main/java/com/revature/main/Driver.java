@@ -83,9 +83,8 @@ public class Driver {
 								// user has ok credentials
 								User user = new User(username, password);
 								AccountMethods bankMethod = new BankMethods();
-
+								System.out.println("Welcome " + username);
 								while (!exit) {
-									System.out.println("Welcome " + username);
 									System.out.println("What would you like to do?:");
 									System.out.println("manage (accounts), exit , delete");
 									String choice = input.nextLine();
@@ -94,7 +93,36 @@ public class Driver {
 										if (bm == null) {
 											System.out.println("No accounts under this user");
 										} else {
-
+											boolean backout = false;
+											while (!backout) {
+												System.out.println("Account Number | Balance");
+												for(BankAccount account : bm) {
+													System.out.println(account.getAccountID() + " | $" + account.getBalance());
+												}
+												System.out.println("Would you like to perform an action on any account?");
+												System.out.println("Type the account number you would like to change or 0 to return to user menu");
+												int option = input.nextInt();
+												if(option==0) {
+													backout= true;
+												}else {
+													int accountNumber = option;
+													System.out.println("you have selected " + accountNumber);
+													System.out.println("Would you like to ...");
+													System.out.println("add (funds), withdraw, delete");
+													String accOption = input.nextLine();
+													if(accOption.equals("add")) {
+														System.out.println("How much");
+														double amount = input.nextDouble();
+													} else if (accOption.equals("withdraw")) {
+														System.out.println("How much");
+														double amount = input.nextDouble();
+														
+													} else if (accOption.equals("delete")) {
+														System.out.println("AHHHHHHH");
+													}
+												}
+											}
+											
 										}
 									} else if (choice.equals("exit")) {
 										exit = true;
