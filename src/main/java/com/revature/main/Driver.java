@@ -61,7 +61,7 @@ public class Driver {
 				boolean exit = false;
 				String username = "";
 				String password = "";
-				while (!loggedIn && !exit) {
+				while (exit) {
 					System.out.println("Please type in your username:");
 					username = input.nextLine();
 					if (username.equals("cancel")) {
@@ -81,23 +81,30 @@ public class Driver {
 								// user has ok credentials
 								User user = new User(username, password);
 								AccountMethods bankMethod = new BankMethods();
-								BankAccount bm = bankMethod.viewAccount(user);
-								if (bm == null) {
-									System.out.println("No accounts under this user");
-								} else {
-									
+								while(exit) {
+									System.out.println("Welcome "+username);
+									System.out.println("What would you like to do?:");
+									System.out.println("manage (accounts), exit , delete");
+									String choice = input.nextLine();
+									if(choice.equals("manage")) {
+										BankAccount bm = bankMethod.viewAccount(user);
+										if (bm == null) {
+											System.out.println("No accounts under this user");
+										} else {
+											
+										}
+									} else if (choice.equals("exit")) {
+										exit = true;
+									} else if (choice.equals("delete")) {
+										
+									}
 								}
+								
 							}
 						}
 					}
 
 				}
-
-				
-				
-				
-				
-
 			} else if (action.equals("exit")) {
 				System.out.println("You have selected exit, are you sure(y/n):");
 				String isSure = input.nextLine();
