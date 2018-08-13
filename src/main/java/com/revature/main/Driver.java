@@ -2,8 +2,11 @@ package com.revature.main;
 
 import java.util.Scanner;
 
+import com.revature.methods.AccountMethods;
+import com.revature.methods.BankMethods;
 import com.revature.methods.DriverMethods;
 import com.revature.methods.UserMethods;
+import com.revature.pojo.BankAccount;
 import com.revature.pojo.User;
 
 public class Driver {
@@ -57,9 +60,16 @@ public class Driver {
 				System.out.println("Please type in your password:");
 				String password = input.nextLine();
 				
-				UserMethods bankMethod = new BankMethod();
+				AccountMethods bankMethod = new BankMethods();
+				User user = new User(username,password);
+				BankAccount bm = bankMethod.viewAccount(user);
+				if(bm == null) {
+					System.out.println("Invalid login credentials");
+				}
+				else {
+					System.out.println(bm.getBalance());
+				}
 				
-
 			} else if (action.equals("exit")) {
 				System.out.println("You have selected exit, are you sure(y/n):");
 				String isSure = input.nextLine();
