@@ -27,7 +27,6 @@ public class BankMethods implements AccountMethods {
 				return null;
 			}
 			else {
-				System.out.println("Correct Credentials");
 				int id = rs.getInt(1);
 				
 				String baStmt = "SELECT * FROM ACCOUNTS WHERE USER_ID = ?";
@@ -39,16 +38,16 @@ public class BankMethods implements AccountMethods {
 				
 				if(rs2.next() == false) {
 					System.out.println("No Accounts");
+					return null;
 				}
 				
-				rs2.beforeFirst();
 				ArrayList<BankAccount> blist = new ArrayList<BankAccount>();
-				while(rs2.next()) {
+				do {
 					int colAccID = rs2.findColumn("ACCOUNT_ID");
 					int colBal = rs2.findColumn("ACCOUNT_BALANCE");
 					BankAccount ba = new BankAccount(rs2.getInt(colAccID), rs2.getDouble(colBal), id);
 					blist.add(ba);
-				}
+				} while(rs2.next());
 				
 				
 				rs.close();
