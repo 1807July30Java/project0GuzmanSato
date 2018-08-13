@@ -4,12 +4,20 @@ public class BankAccount {
 	private int accountID;
 	private double balance;
 	private String type;
+	private int userID;
 	
-	public BankAccount(int accountID, double balance, String type) {
+	public BankAccount(int accountID, double balance) {
 		super();
 		this.accountID = accountID;
 		this.balance = balance;
 		this.type = type;
+	}
+
+	public BankAccount(int accountID, double balance,int userID) {
+		super();
+		this.accountID = accountID;
+		this.balance = balance;
+		this.userID = userID;
 	}
 	
 	public int getAccountID() {

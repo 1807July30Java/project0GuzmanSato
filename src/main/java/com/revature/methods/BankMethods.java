@@ -1,6 +1,7 @@
 package com.revature.methods;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,20 +12,37 @@ import com.revature.sql.ConnectionUtil;
 
 public class BankMethods implements AccountMethods {
 
-	public BankAccount viewAccount(User u, int accountID) {
-		BankAccount ba = null;
-		int id;
-		String stmt = "SELECT ID FROM USER WHERE USERNAME = "
-				+ u.getUsername() + " AND PASSWORD = " + u.getPassword();
+	public BankAccount viewAccount(User u) {
+		String stmt = "SELECT * FROM BANK_USERS WHERE USER_NAME = ? AND USER_PASSWORD = ?";
+		
 		
 		try {
-			PreparedStatement pstmt = ConnectionUtil.getConnection().prepareStatement(stmt);
+			Connection connection = ConnectionUtil.getConnection();
+			PreparedStatement pstmt = connection.prepareStatement(stmt);
+			pstmt.setString(1,u.getUsername());
+			pstmt.setString(2, u.getPassword());
 			ResultSet rs = pstmt.executeQuery();
-			if(!rs.next())
-				return ba;
+			connection.close();
+
+			if(rs.next() == false) {
+				System.out.println("Incorrect Credentials");
+				connection.close();
+				return null;
+				
+			}
+			
+
 			else {
-				id = rs.getInt(1);
-				String baStmt = "SELECT * FROM ACCOUNT WHERE ID = " + id;
+				System.out.println("Correct Credentials");
+				int id = rs.getInt(1);
+				String baStmt = "SELECT * FROM ACCOUNTS WHERE USER_ID = ?";
+				connection = ConnectionUtil.getConnection();
+				pstmt = connection.prepareStatement(baStmt);
+				pstmt.setInt(1, id);
+				rs = pstmt.executeQuery();
+				connection.close();
+				
+				return new BankAccount(rs.getInt(1),rs.getDouble(2),id);
 				
 				
 			}
