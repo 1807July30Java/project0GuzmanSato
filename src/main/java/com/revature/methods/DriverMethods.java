@@ -33,13 +33,13 @@ public class DriverMethods implements UserMethods {
 	public boolean createUser(String username, String password) {
 		// TODO Auto-generated method stub
 		User user = new User(username,password);
-		String statement = "INSERT INTO USER (ID,USERNAME,PASSWORD) VALUES (?,?)";
+		String statement = "INSERT INTO BANK_USERS (USER_NAME,USER_PASSWORD,IS_ADMIN) VALUES (?,?,?)";
 		
 		try {
-			PreparedStatement pstmt = ConnectionUtil.getConnection().prepareStatement(statement);
-			pstmt.setInt(1, getLatestUserID());
+			PreparedStatement pstmt = ConnectionUtil.getConnection().prepareStatement(statement);;
 			pstmt.setString(1,username);
 			pstmt.setString(2, password);
+			pstmt.setInt(3,0);
 			pstmt.executeUpdate();
 			return true;
 		} catch (SQLException e) {
@@ -49,8 +49,6 @@ public class DriverMethods implements UserMethods {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
 		
 		return false;
 	}
@@ -82,18 +80,22 @@ public class DriverMethods implements UserMethods {
 	public User getUserByName(String username) {
 		// TODO Auto-generated method stub
 		
-		String statement = "SELECT * FROM USER WHERE USER.NAME = " + username;
+		String statement = "SELECT * FROM BANK_USERS WHERE BANK_USERS.USER_NAME = ?";
 		try {
 			Connection connection = ConnectionUtil.getConnection();
 			PreparedStatement pstmt = connection.prepareStatement(statement);
+			pstmt.setString(1,username);
 			ResultSet rs = pstmt.executeQuery();
-	
-			if(!rs.next())
-				return null;
-			else {
-				return new User(rs.getInt(1),rs.getString(2),rs.getString(3));
-				
+			
+		
+			if(rs.next() == false) {
+				return new User(username);
 			}
+				
+			else {
+				return null;
+			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -101,6 +103,7 @@ public class DriverMethods implements UserMethods {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		return null;
 	}
 
