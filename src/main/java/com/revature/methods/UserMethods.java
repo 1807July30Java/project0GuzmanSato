@@ -11,4 +11,5 @@ public interface UserMethods {
 	//public boolean updateUser(String username);
 	public User getUserByName(String username);
 	
+	public User getUser(String username,String password);	
 }

@@ -102,11 +102,12 @@ public class DriverMethods implements UserMethods {
 			
 		
 			if(rs.next() == false) {
-				return new User(username);
+				return null;
 			}
 				
 			else {
-				return null;
+				int colPass = rs.findColumn("USER_PASSWORD");
+				return new User(username,rs.getString(colPass));	
 			}
 			
 		} catch (SQLException e) {
@@ -116,7 +117,35 @@ public class DriverMethods implements UserMethods {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return null;
+	}
+
+	public User getUser(String username, String password) {
+		// TODO Auto-generated method stub
+		String statement = "SELECT * FROM BANK_USERS WHERE BANK_USERS.USER_NAME = ? AND BANK_USERS.USER_PASSWORD = ?";
+		try {
+			Connection connection = ConnectionUtil.getConnection();
+			PreparedStatement pstmt = connection.prepareStatement(statement);
+			pstmt.setString(1,username);
+			pstmt.setString(2, password);
+			ResultSet rs = pstmt.executeQuery();
+			
 		
+			if(rs.next() == false) {
+				return new User(username,"");
+			}
+				
+			else {
+				return new User(username,password);				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 
