@@ -29,7 +29,9 @@ public class Driver {
 						cancel = true;
 					} else {
 						// RUN possibleUser = getUserByName(desiredName);
-						if (!DriverMethods.doesUserNameExist(desiredName)) {
+						UserMethods method = new DriverMethods();
+						User possibleUser = method.getUserByName(desiredName);
+						if (possibleUser == null) {
 							// User with that name exists
 							System.out.println("Username is taken, please select another");
 							System.out.println("if you would like to cancel and login, please type cancel");
@@ -54,6 +56,9 @@ public class Driver {
 				String username = input.nextLine();
 				System.out.println("Please type in your password:");
 				String password = input.nextLine();
+				
+				UserMethods bankMethod = new BankMethod();
+				
 
 			} else if (action.equals("exit")) {
 				System.out.println("You have selected exit, are you sure(y/n):");

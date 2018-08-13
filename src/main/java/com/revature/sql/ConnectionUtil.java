@@ -13,7 +13,7 @@ public class ConnectionUtil {
 	//DONT PUSH CONNECTION.PROPERTIES FILE
 	public static Connection getConnection() throws SQLException, IOException {
 		Properties prop = new Properties();
-		InputStream in = new FileInputStream("/common.properties");
+		InputStream in = new FileInputStream("C:\\GitRepos\\1807July30Java\\GuzmanO\\project0GuzmanSato\\src\\test\\resources\\common.properties");
 		prop.load(in);
 		String url = prop.getProperty("url");
 		String username = prop.getProperty("username");

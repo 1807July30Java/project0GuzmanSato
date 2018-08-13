@@ -4,15 +4,28 @@ public class User {
 	private int userID;
 	private String username;
 	private String password;
+	private boolean isAdmin;
 	
 	public User(int userID, String username, String password) {
 		this.userID = userID;
 		this.username = username;
 		this.password = password;
+		this.isAdmin = false;
 	}
 	public User(String username, String password) {
 		this.username = username;
 		this.password = password;
+	}
+	
+	public User(int userID, String username, String password,boolean isAdmin) {
+		this.userID = userID;
+		this.username = username;
+		this.password = password;
+		this.isAdmin = isAdmin;
+	}
+	
+	public User(String username) {
+		this.username = username;
 	}
 	
 	public int getUserID() {
