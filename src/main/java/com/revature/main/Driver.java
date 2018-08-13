@@ -36,7 +36,7 @@ public class Driver {
 						// RUN possibleUser = getUserByName(desiredName);
 						UserMethods method = new DriverMethods();
 						User possibleUser = method.getUserByName(desiredName);
-						if (possibleUser == null) {
+						if (possibleUser != null) {
 							// User with that name exists
 							System.out.println("Username is taken, please select another");
 							System.out.println("if you would like to cancel and login, please type cancel");
