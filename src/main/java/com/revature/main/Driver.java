@@ -1,5 +1,7 @@
 package com.revature.main;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import com.revature.methods.AccountMethods;
@@ -82,12 +84,12 @@ public class Driver {
 								User user = new User(username, password);
 								AccountMethods bankMethod = new BankMethods();
 								while(exit) {
-									System.out.println("Welcome "+username);
+									System.out.println("Welcome "+ username);
 									System.out.println("What would you like to do?:");
 									System.out.println("manage (accounts), exit , delete");
 									String choice = input.nextLine();
 									if(choice.equals("manage")) {
-										BankAccount bm = bankMethod.viewAccount(user);
+										List<BankAccount> bm = bankMethod.viewAccount(user);
 										if (bm == null) {
 											System.out.println("No accounts under this user");
 										} else {

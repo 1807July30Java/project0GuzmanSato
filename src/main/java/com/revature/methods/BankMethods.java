@@ -24,7 +24,6 @@ public class BankMethods implements AccountMethods {
 			pstmt.setString(2, u.getPassword());
 			ResultSet rs = pstmt.executeQuery();
 			if (rs.next() == false) {
-				System.out.println("Incorrect Credentials");
 				return null;
 			}
 			else {
