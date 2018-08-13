@@ -12,7 +12,7 @@ public interface AccountMethods {
 	//public int deleteAccountSuper(int accountID);
 	public List<BankAccount> viewAccount(User u);
 	public int createAccount(User u,int accountID);
-	public int deleteAccount(User u,int accountID);
+	public int deleteAccount(int accountID);
 
 	
 	//Bonus

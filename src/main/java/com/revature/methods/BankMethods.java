@@ -75,11 +75,44 @@ public class BankMethods implements AccountMethods {
 
 	public int createAccount(User u, int accountID) {
 		// TODO Auto-generated method stub
+		int uid = u.getUserID();
+		String stmt = "INSERT INTO ACCOUNTS(ACCOUNT_BALANCE,USER_ID) VALUES (0,?)";
+		Connection connection;
+		try {
+			connection = ConnectionUtil.getConnection();
+			PreparedStatement pstmt = connection.prepareStatement(stmt);
+			pstmt.setInt(1,uid);
+			ResultSet rs = pstmt.executeQuery();
+			connection.close();
+			return 1;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return 0;
 	}
 
-	public int deleteAccount(User u, int accountID) {
+	public int deleteAccount(int accountID) {
 		// TODO Auto-generated method stub
+		String stmt = "DELETE FROM ACCOUNTS WHERE ACCOUNT_ID = ?";
+		Connection connection;
+		try {
+			connection = ConnectionUtil.getConnection();
+			PreparedStatement pstmt = connection.prepareStatement(stmt);
+			pstmt.setInt(1,accountID);
+			ResultSet rs = pstmt.executeQuery();
+			connection.close();
+			return 1;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return 0;
 	}
 
