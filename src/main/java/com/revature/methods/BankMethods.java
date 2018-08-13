@@ -14,7 +14,7 @@ import com.revature.sql.ConnectionUtil;
 
 public class BankMethods implements AccountMethods {
 	
-	public boolean changeValue(int accountID, double value) throws SQLException, IOException {
+	public static boolean changeValue(int accountID, double value) throws SQLException, IOException {
 		String stmt = "SELECT * FROM ACCOUNTS WHERE ACCOUNT_ID = ?";
 		
 		Connection connection = ConnectionUtil.getConnection();
