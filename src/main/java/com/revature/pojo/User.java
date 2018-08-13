@@ -24,10 +24,6 @@ public class User {
 		this.isAdmin = isAdmin;
 	}
 	
-	public User(String username) {
-		this.username = username;
-	}
-	
 	public int getUserID() {
 		return userID;
 	}

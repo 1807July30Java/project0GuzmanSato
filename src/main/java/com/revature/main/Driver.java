@@ -84,25 +84,25 @@ public class Driver {
 								User user = new User(username, password);
 								AccountMethods bankMethod = new BankMethods();
 
-								while(!exit) {
-									System.out.println("Welcome "+username);
+								while (!exit) {
+									System.out.println("Welcome " + username);
 									System.out.println("What would you like to do?:");
 									System.out.println("manage (accounts), exit , delete");
 									String choice = input.nextLine();
-									if(choice.equals("manage")) {
+									if (choice.equals("manage")) {
 										List<BankAccount> bm = bankMethod.viewAccount(user);
 										if (bm == null) {
 											System.out.println("No accounts under this user");
 										} else {
-											
+
 										}
 									} else if (choice.equals("exit")) {
 										exit = true;
 									} else if (choice.equals("delete")) {
-										
+
 									}
 								}
-								
+
 							}
 						}
 					}
