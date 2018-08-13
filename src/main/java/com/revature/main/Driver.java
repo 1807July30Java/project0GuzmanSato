@@ -61,7 +61,7 @@ public class Driver {
 				boolean exit = false;
 				String username = "";
 				String password = "";
-				while (exit) {
+				while (!exit) {
 					System.out.println("Please type in your username:");
 					username = input.nextLine();
 					if (username.equals("cancel")) {
@@ -81,7 +81,7 @@ public class Driver {
 								// user has ok credentials
 								User user = new User(username, password);
 								AccountMethods bankMethod = new BankMethods();
-								while(exit) {
+								while(!exit) {
 									System.out.println("Welcome "+username);
 									System.out.println("What would you like to do?:");
 									System.out.println("manage (accounts), exit , delete");
