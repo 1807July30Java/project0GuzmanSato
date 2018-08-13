@@ -76,6 +76,19 @@ public class DriverMethods implements UserMethods {
 
 	public boolean deleteUser(String username) {
 		// TODO Auto-generated method stub
+		
+		String deleteStmt = "DELETE FROM USERS WHERE USER_NAME = " + username ;
+		try {
+			Connection connection = ConnectionUtil.getConnection();
+			PreparedStatement psmt = connection.prepareStatement(deleteStmt);
+			psmt.executeQuery();
+			return true;
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return false;
 	}
 
