@@ -83,9 +83,8 @@ public class Driver {
 								// user has ok credentials
 								User user = new User(username, password);
 								AccountMethods bankMethod = new BankMethods();
-
+								System.out.println("Welcome " + username);
 								while (!exit) {
-									System.out.println("Welcome " + username);
 									System.out.println("What would you like to do?:");
 									System.out.println("manage (accounts), exit , delete");
 									String choice = input.nextLine();
@@ -94,7 +93,15 @@ public class Driver {
 										if (bm == null) {
 											System.out.println("No accounts under this user");
 										} else {
-
+											for(BankAccount account : bm) {
+												boolean backout = false;
+												while (!backout) {
+													
+												}
+												System.out.println("Account Number | Balance");
+												System.out.println(account.getAccountID() + " | $" + account.getBalance());
+												
+											}
 										}
 									} else if (choice.equals("exit")) {
 										exit = true;
