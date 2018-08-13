@@ -38,13 +38,13 @@ public class Driver {
 							System.out.println("Enter your desired password: ");
 							String password = input.nextLine();
 							UserMethods dm = new DriverMethods();
-							boolean success = dm.createUser(desiredName,password);
-							
-							if(success){
-							 System.out.println("User account created: login at the main menu with credentials")
-							 accountMade = true;
-							 }
-							 
+							boolean success = dm.createUser(desiredName, password);
+
+							if (success) {
+								System.out.println("User account created: login at the main menu with credentials");
+								accountMade = true;
+							}
+
 						}
 					}
 				}
@@ -54,8 +54,6 @@ public class Driver {
 				String username = input.nextLine();
 				System.out.println("Please type in your password:");
 				String password = input.nextLine();
-				
-				Driv
 
 			} else if (action.equals("exit")) {
 				System.out.println("You have selected exit, are you sure(y/n):");
