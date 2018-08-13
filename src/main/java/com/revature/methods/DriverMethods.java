@@ -81,6 +81,26 @@ public class DriverMethods implements UserMethods {
 
 	public User getUserByName(String username) {
 		// TODO Auto-generated method stub
+		
+		String statement = "SELECT * FROM USER WHERE USER.NAME = " + username;
+		try {
+			Connection connection = ConnectionUtil.getConnection();
+			PreparedStatement pstmt = connection.prepareStatement(statement);
+			ResultSet rs = pstmt.executeQuery();
+	
+			if(!rs.next())
+				return null;
+			else {
+				return new User(rs.getInt(1),rs.getString(2),rs.getString(3));
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 
