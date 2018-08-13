@@ -13,6 +13,43 @@ import com.revature.pojo.User;
 import com.revature.sql.ConnectionUtil;
 
 public class BankMethods implements AccountMethods {
+	
+	public boolean changeValue(int accountID, double value) throws SQLException, IOException {
+		String stmt = "SELECT * FROM ACCOUNTS WHERE ACCOUNT_ID = ?";
+		
+		Connection connection = ConnectionUtil.getConnection();
+		PreparedStatement pstmt = connection.prepareStatement(stmt);
+		pstmt.setInt(1, accountID);
+		ResultSet rs = pstmt.executeQuery();
+		
+		if(rs.next() == false) {
+			return false;
+		}
+		else {
+			int colBal = rs.findColumn("ACCOUNT_BALANCE");
+			double balance = rs.getDouble(colBal);
+			double result = balance + value;
+			if(result < 0) {
+				return false;
+			}
+			else {
+				String stmt2 = "UPDATE ACCOUNTS SET ACCOUNT_ID = ? WHERE ACCOUNT_ID = ?";
+				Connection connection2 = ConnectionUtil.getConnection();
+				PreparedStatement pstmt2 = connection2.prepareStatement(stmt2);
+				pstmt2.setDouble(1,result);
+				pstmt2.setInt(2,accountID);
+				ResultSet rs2 = pstmt2.executeQuery();
+				rs2.close();
+				connection2.close();
+			}
+			
+			
+			
+			
+			return true;
+			
+		}
+	}
 
 	public List<BankAccount> viewAccount(User u) {
 		String stmt = "SELECT * FROM BANK_USERS WHERE BANK_USERS.USER_NAME = ? AND BANK_USERS.USER_PASSWORD = ?";
@@ -39,6 +76,7 @@ public class BankMethods implements AccountMethods {
 				if(rs2.next() == false) {
 					System.out.println("No Accounts");
 					return null;
+					
 				}
 				
 				ArrayList<BankAccount> blist = new ArrayList<BankAccount>();
