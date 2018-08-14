@@ -14,7 +14,7 @@ import com.revature.pojo.BankAccount;
 import com.revature.pojo.User;
 
 public class Driver {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException, IOException {
 		Scanner input = new Scanner(System.in);
 		boolean exitCode = false;
 		System.out.println("Welcome to Saguz Bank");
@@ -115,13 +115,15 @@ public class Driver {
 													if(accOption.equals("add")) {
 														System.out.println("How much");
 														double amount = input.nextDouble();
+														bankMethod.changeValue(accountNumber,amount);
 
 													} else if (accOption.equals("withdraw")) {
 														System.out.println("How much");
 														double amount = input.nextDouble();
 														boolean ahhh = false;
 														try {
-														   ahhh = BankMethods.changeValue(accountNumber,(-amount));
+														    bankMethod.changeValue(accountNumber,(-amount));
+														    ahhh = true;
 														} catch (SQLException e) {
 															// TODO Auto-generated catch block
 															e.printStackTrace();

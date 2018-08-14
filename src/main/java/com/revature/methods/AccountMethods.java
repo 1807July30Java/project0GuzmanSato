@@ -1,5 +1,7 @@
 package com.revature.methods;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import com.revature.pojo.BankAccount;
@@ -13,6 +15,7 @@ public interface AccountMethods {
 	public List<BankAccount> viewAccount(User u);
 	public int createAccount(User u,int accountID);
 	public int deleteAccount(int accountID);
+	public boolean changeValue(int accountID, double value) throws SQLException, IOException;
 
 	
 	//Bonus
