@@ -104,6 +104,7 @@ public class Driver {
 												System.out.println("Would you like to perform an action on any account?");
 												System.out.println("Type the account number you would like to change or 0 to return to user menu");
 												String option = input.nextLine();
+												
 												if(option.equals("0")) {
 													backout= true;
 												}else {
@@ -116,7 +117,7 @@ public class Driver {
 														System.out.println("How much");
 														double amount = input.nextDouble();
 														bankMethod.changeValue(accountNumber,amount);
-
+														backout = true;
 													} else if (accOption.equals("withdraw")) {
 														System.out.println("How much");
 														double amount = input.nextDouble();
@@ -124,6 +125,7 @@ public class Driver {
 														try {
 														    bankMethod.changeValue(accountNumber,(-amount));
 														    ahhh = true;
+														    backout = true;
 														} catch (SQLException e) {
 															// TODO Auto-generated catch block
 															e.printStackTrace();
