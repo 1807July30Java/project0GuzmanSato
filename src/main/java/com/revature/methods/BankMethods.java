@@ -127,7 +127,7 @@ public class BankMethods implements AccountMethods {
 		return 0;
 	}
 
-	public int deleteAccount(int accountID) {
+	public boolean deleteAccount(int accountID) {
 		// TODO Auto-generated method stub
 		String stmt = "DELETE FROM ACCOUNTS WHERE ACCOUNT_ID = ?";
 		Connection connection;
@@ -136,8 +136,9 @@ public class BankMethods implements AccountMethods {
 			PreparedStatement pstmt = connection.prepareStatement(stmt);
 			pstmt.setInt(1,accountID);
 			ResultSet rs = pstmt.executeQuery();
+			rs.close();
 			connection.close();
-			return 1;
+			return true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -145,7 +146,7 @@ public class BankMethods implements AccountMethods {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return 0;
+		return false;
 	}
 
 	public int TransactionHistory(int accountID) {

@@ -14,7 +14,7 @@ public interface AccountMethods {
 	//public int deleteAccountSuper(int accountID);
 	public List<BankAccount> viewAccount(User u);
 	public int createAccount(User u,int accountID);
-	public int deleteAccount(int accountID);
+	public boolean deleteAccount(int accountID);
 	public boolean changeValue(int accountID, double value) throws SQLException, IOException;
 
 	

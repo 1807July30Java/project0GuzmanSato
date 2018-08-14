@@ -138,7 +138,16 @@ public class Driver {
 														}
 														
 													} else if (accOption.equals("delete")) {
-														System.out.println("AHHHHHHH");
+														System.out.println("you have selected delete");
+														System.out.println("Which account would you like to delete?");
+														String deleteID = input.nextLine();
+														int accID = Integer.parseInt(deleteID);
+														boolean success = bankMethod.deleteAccount(accID);
+														if (success) {
+															System.out.println("Sucess");
+														} else {
+															System.out.println("Failure");
+														}
 													}
 												}
 											}
