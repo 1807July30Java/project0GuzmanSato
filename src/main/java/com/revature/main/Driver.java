@@ -1,5 +1,7 @@
 package com.revature.main;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -113,16 +115,25 @@ public class Driver {
 													if(accOption.equals("add")) {
 														System.out.println("How much");
 														double amount = input.nextDouble();
-														for(BankAccount account : bm) {
-															if(amount == account.getAccountID()) {
-																
-															}
-				
-														}
-														
+
 													} else if (accOption.equals("withdraw")) {
 														System.out.println("How much");
 														double amount = input.nextDouble();
+														boolean ahhh = false;
+														try {
+														   ahhh = BankMethods.changeValue(accountNumber,(-amount));
+														} catch (SQLException e) {
+															// TODO Auto-generated catch block
+															e.printStackTrace();
+														} catch (IOException e) {
+															// TODO Auto-generated catch block
+															e.printStackTrace();
+														}
+														if (ahhh) {
+															System.out.println("Sucess");
+														} else {
+															System.out.println("Failure");
+														}
 														
 													} else if (accOption.equals("delete")) {
 														System.out.println("AHHHHHHH");
