@@ -42,10 +42,6 @@ public class BankMethods implements AccountMethods {
 				rs2.close();
 				connection2.close();
 			}
-			
-			
-			
-			
 			return true;
 			
 		}

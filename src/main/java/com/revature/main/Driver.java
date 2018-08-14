@@ -113,6 +113,13 @@ public class Driver {
 													if(accOption.equals("add")) {
 														System.out.println("How much");
 														double amount = input.nextDouble();
+														for(BankAccount account : bm) {
+															if(amount == account.getAccountID()) {
+																
+															}
+				
+														}
+														
 													} else if (accOption.equals("withdraw")) {
 														System.out.println("How much");
 														double amount = input.nextDouble();
