@@ -103,7 +103,8 @@ public class Driver {
 												}
 												System.out.println("Would you like to perform an action on any account?");
 												System.out.println("Type the account number you would like to change or 0 to return to user menu");
-												int option = input.nextInt();
+												//int option = Integer.parseInt(input.nextLine().trim());
+												//String option = input.nextLine()
 												if(option == 0) {
 													backout= true;
 												}else {
@@ -112,6 +113,7 @@ public class Driver {
 													System.out.println("Would you like to ...");
 													System.out.println("add (funds), withdraw, delete");
 													String accOption = input.nextLine();
+													
 													if(accOption.equals("add")) {
 														System.out.println("How much");
 														double amount = input.nextDouble();
