@@ -104,7 +104,7 @@ public class Driver {
 												System.out.println("Would you like to perform an action on any account?");
 												System.out.println("Type the account number you would like to change or 0 to return to user menu");
 												int option = input.nextInt();
-												if(option==0) {
+												if(option == 0) {
 													backout= true;
 												}else {
 													int accountNumber = option;
@@ -148,6 +148,8 @@ public class Driver {
 														} else {
 															System.out.println("Failure");
 														}
+													} else {
+														System.out.println("Not valid");
 													}
 												}
 											}
@@ -161,6 +163,7 @@ public class Driver {
 								}
 
 							}
+							
 						}
 					}
 
