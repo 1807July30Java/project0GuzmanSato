@@ -103,11 +103,13 @@ public class Driver {
 												}
 												System.out.println("Would you like to perform an action on any account?");
 												System.out.println("Type the account number you would like to change or 0 to return to user menu");
-												int option = Integer.parseInt(input.nextLine().trim());
-												if(option == 0) {
+												//int option = Integer.parseInt(input.nextLine().trim());
+												String option = input.nextLine();
+												//if(option == 0) {
+												if(option.equals("0")) {
 													backout= true;
 												}else {
-													int accountNumber = option;
+													int accountNumber = Integer.parseInt(option);
 													System.out.println("you have selected " + accountNumber);
 													System.out.println("Would you like to ...");
 													System.out.println("add (funds), withdraw, delete");
@@ -115,12 +117,16 @@ public class Driver {
 													
 													if(accOption.equals("add")) {
 														System.out.println("How much");
-														double amount = input.nextDouble();
+														String nLine = input.nextLine();
+														double amount = //input.nextDouble();
+																Double.parseDouble(nLine);
 														bankMethod.changeValue(accountNumber,amount);
 
 													} else if (accOption.equals("withdraw")) {
 														System.out.println("How much");
-														double amount = input.nextDouble();
+														String nLine = input.nextLine();
+														double amount = //input.nextDouble();
+																Double.parseDouble(nLine);
 														boolean ahhh = false;
 														try {
 														    bankMethod.changeValue(accountNumber,(-amount));
